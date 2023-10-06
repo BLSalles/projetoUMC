@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "App",
+    "dateExported": "2023-08-31T00:38:47.549Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "0409e261-ab4e-4ebe-b24b-5b601656c0f1",
+            "colId": "4787051a-957c-4a6d-8d71-f53948a82b71",
+            "containerId": "",
+            "name": "localhost:3000/",
+            "url": "http://localhost:3000/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-31T00:03:23.022Z",
+            "modified": "2023-08-31T00:05:29.859Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 1,\n    \"name\": \"teste\",\n  \n    \"admin\": false,\n    \"password\": \"1234\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
