@@ -1,5 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid} from "uuid";
+
+@Entity()
 
 export class Profile{
     @PrimaryGeneratedColumn()
@@ -10,6 +12,12 @@ export class Profile{
 
     @Column()
     photo:string;
+
+    @CreateDateColumn()
+    created_at!:Date;
+
+    @UpdateDateColumn()
+    update_at!:Date;
 
     constructor() {
         if(!this.id){

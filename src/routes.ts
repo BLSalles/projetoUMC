@@ -3,6 +3,7 @@ import { CreateUserController } from "./controller/user/CreateUserController";
 import { ListUsersController } from "./controller/user/LIstUserController";
 import { UpdateUserController } from "./controller/user/UpdateUserController";
 import { DeleteUserController } from "./controller/user/DeleteUserController";
+import { CreateProfileController} from "./controller/profile/CreateProfileController";
 import { AuthenticateUserController } from "./controller/autentication/AuthenticateUserController";
 import { ensureAuthenticated} from "./middleware/ensureAuthenticated";
 import { CreateFilmeController } from "./controller/filme/CreateFilmeController";
@@ -24,6 +25,7 @@ import { DeleteLocacaoController } from "./controller/locacao/DeleteLocacaoContr
 const deleteUserController = new DeleteUserController();
 const updateUserController = new UpdateUserController();
 const createUserController  = new CreateUserController();
+const createProfileController = new CreateProfileController();
 const authenticateUserController  = new AuthenticateUserController();
 const listUsersController= new ListUsersController();
 const router = Router();
@@ -33,6 +35,9 @@ router.use(ensureAuthenticated)
 router.get("/users", listUsersController.handle);
 router.put("/users", updateUserController.handle);
 router.delete("/users", deleteUserController.handle);
+
+// Profile
+router.post("/profile", createProfileController.handle);
 
 // Filmes
 const listFilmeController = new ListFilmeController();
