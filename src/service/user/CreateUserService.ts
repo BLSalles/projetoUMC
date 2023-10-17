@@ -7,10 +7,11 @@ interface IUserRequest {
     email: string;
     admin?: boolean;
     password: string;
+    profile: string;
   }
   
   class CreateUserService {
-    async execute({ name, email, admin = false, password }: IUserRequest) {
+    async execute({ name, email, admin = false, password , profile}: IUserRequest) {
       const usersRepository = getCustomRepository(UsersRepositories);
   
       if (!email) {
@@ -23,6 +24,7 @@ interface IUserRequest {
         email,
         admin,
         password: passwordHash,
+        profile: {id: profile}
       });
       await usersRepository.save(user);
       console.log("Usuario Criado")

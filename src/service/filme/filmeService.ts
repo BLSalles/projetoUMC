@@ -3,7 +3,7 @@ import { getCustomRepository } from "typeorm";
 
 interface Filme {
     name: string;
-    description: string;
+   description: string;    
   }
   
 
@@ -13,18 +13,23 @@ class FilmeService {
   constructor() {
     this.filmeRepository = getCustomRepository(FilmeRepositories);
   }
-
-  async createFilme(name: string, description: string): Promise<Filme> {
+  async createFilme(name: string, description: string, genero: string): Promise<Filme> {
     const filme = this.filmeRepository.create({
       name,
       description,
+      genero:{id:genero}
     });
-
+  
     return await this.filmeRepository.save(filme);
   }
 
   async getAllFilmes(): Promise<Filme[]> {
-    return await this.filmeRepository.find();
+    const filmes = await this.filmeRepository
+  .createQueryBuilder('filme')
+  .leftJoinAndSelect('filme.genero', 'genero')
+  .getMany();
+
+  return filmes;
   }
 
   async getFilmeById(name: string): Promise<Filme | undefined> {

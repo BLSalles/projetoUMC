@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { FilmeService } from "../../service/filme/filmeService";
 
+
 class UpdateFilmeController {
 
   async handle(request: Request, response: Response) {
@@ -8,7 +9,7 @@ class UpdateFilmeController {
 
     const updateFilmeService = new FilmeService();
 
-    const filme = await updateFilmeService.updateFilme(id, name, description);
+    const filme = await updateFilmeService.updateFilme(id,name,description);
     return response.json(filme);
   }
 }

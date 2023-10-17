@@ -4,7 +4,9 @@ class ListUserService {
   async execute() {
     const usersRepositories = getCustomRepository(UsersRepositories);
 
-    const users = await usersRepositories.find();
+    const users = await usersRepositories.createQueryBuilder("user")
+    .leftJoinAndSelect("user.profile", "profile")
+    .getMany()
     return  users;
   }
 }

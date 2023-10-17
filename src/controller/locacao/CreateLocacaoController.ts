@@ -3,12 +3,14 @@ import { LocacaoService } from "../../service/locacao/locacaoService";
 
 class CreateLocacaoController {
   async handle(request: Request, response: Response) {
-   const { description } = request.body;
+   const { description,filmes,users} = request.body;
    const Locacao = {
-      description:description
+      description:description,
+      filmes:filmes,
+      users:users
     }; 
     const createLocacaoService  = new LocacaoService();
-    const ret = await  createLocacaoService.createLocacao(Locacao.description);
+    const ret = await  createLocacaoService.createLocacao(description,filmes,users);
     return response.json(ret);
 
   }

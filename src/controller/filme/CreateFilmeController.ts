@@ -2,13 +2,14 @@ import { Request, Response } from "express";
 import { FilmeService } from "../../service/filme/filmeService";
 class CreateFilmeController {
   async handle(request: Request, response: Response) {
-   const { name, description } = request.body;
+   const { name, description, genero} = request.body;
    const filme = {
       name:name,
-      description:description
+      description:description,
+      genero:genero
     }; 
     const createFilmeService  = new FilmeService();
-    const ret = await  createFilmeService.createFilme(filme.name, filme.description);
+    const ret = await  createFilmeService.createFilme(name, description, genero);
     return response.json(ret);
 
   }

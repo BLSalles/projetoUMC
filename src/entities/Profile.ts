@@ -1,27 +1,26 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { v4 as uuid} from "uuid";
-
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm"
+import { v4 as uuid } from "uuid";
 @Entity()
+export class Profile {
 
-export class Profile{
-    @PrimaryGeneratedColumn()
-    id: string;
-
-    @Column()
-    description: string;
+    @PrimaryColumn()
+    id: string
 
     @Column()
-    photo:string;
+    description: string
+
+    @Column()
+    photo: string
 
     @CreateDateColumn()
-    created_at!:Date;
-
+      created_at!: Date;
+  
     @UpdateDateColumn()
-    update_at!:Date;
-
+      updated_at!: Date;
+      
     constructor() {
-        if(!this.id){
-            this.id = uuid();
+        if (!this.id) {
+          this.id = uuid();
         }
-    }
+      }
 }

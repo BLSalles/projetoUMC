@@ -38,6 +38,7 @@ router.delete("/users", deleteUserController.handle);
 
 // Profile
 router.post("/profile", createProfileController.handle);
+router.get("/profile", listUsersController.handle);
 
 // Filmes
 const listFilmeController = new ListFilmeController();

@@ -3,12 +3,8 @@ import { CreateUserService } from "../../service/user/CreateUserService";
 import { profile } from "console";
 class CreateUserController {
   async handle(request: Request, response: Response) {
-   const { name, email, admin, password,profile } = request.body;
-   console.log(name)
-   console.log(email)
-   console.log(admin)
-   console.log(password) 
-   console.log(profile)  
+   const { name, email, admin, password, profile } = request.body;
+  
    const user = {
       name:name,
       email:email,

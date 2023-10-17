@@ -1,4 +1,3 @@
-import { compare } from "bcryptjs";
 import { hash } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { getCustomRepository } from "typeorm";
@@ -17,7 +16,7 @@ class AuthenticateUserService {
     if(!user){
         throw new Error("Email incorreto");
     }
-    const passwordMatch = await compare(password, user?.password);
+    const passwordMatch = await hash(password, user?.password);
 
     if (!passwordMatch) {
       throw new Error("Password incorrect");

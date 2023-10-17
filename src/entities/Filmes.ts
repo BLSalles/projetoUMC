@@ -1,9 +1,14 @@
 import {
     Entity,
     PrimaryColumn,
-    Column
+    Column,
+    CreateDateColumn,
+    UpdateDateColumn,
+    OneToOne,
+    JoinColumn
   } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Genero } from "./Genero";
   
   @Entity("filmes")
   class Filmes {
@@ -15,6 +20,16 @@ import { v4 as uuid } from "uuid";
   
     @Column()
       description!: string;
+
+    @CreateDateColumn()
+      created_at!: Date;
+  
+    @UpdateDateColumn()
+      updated_at!: Date;
+            
+    @OneToOne(() => Genero)
+    @JoinColumn()
+       genero: Genero    
   
     constructor() {
       if (!this.id) {
